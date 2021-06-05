@@ -79,6 +79,17 @@ public class Server {
                              {
                                  if (next.getUsername().compareTo(p.getUsername())==0 && next.getPassword().compareTo(p.getPassword())==0)
                                  {
+                                     //test
+                                     Classroom c = new Classroom();
+                                        c.setName("test class");
+                                        c.setDescribtion("hello world");
+                                        c.setId("123x");
+                                        next.JoinClassroom(c);
+                                        Assignment as = new Assignment(new Teacher(null), c, "best", "test");
+                                        as.setAssignId("123");
+                                        c.addAssignment(as);
+                                     //end test
+                                     res = (Packet)next;
                                      objectOutputStream.writeObject(res);
                                      status=true;
                                      break;
