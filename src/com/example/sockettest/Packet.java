@@ -13,14 +13,21 @@ import java.io.Serializable;
  */
 public class Packet implements Serializable {
     String msg;
-
+    Person person;
     public Packet(String msg) {
         this.msg = msg;
     }
-
+    public Packet(String msg, Person person) {
+        this.msg = msg;
+        this.person = person;
+    }
     @Override
     public String toString() {
         return msg;
+    }
+    public void Clear(){
+        msg = null;
+        person = null;
     }
     
 }
