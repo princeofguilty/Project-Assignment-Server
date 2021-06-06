@@ -26,7 +26,7 @@ public class Server {
     BufferedReader br;
     static Person din;
     public static List<Person> persons=new ArrayList<Person>();
-    private static final int PORT = 9992;
+    private static final int PORT = 9990;
 
    /* public String loginReg(Socket s)
     {
@@ -56,7 +56,7 @@ public class Server {
             try
             {
                     
-                cmd=((Packet)objectInputStream.readObject());
+                cmd=(Packet)objectInputStream.readObject();
                          //objectOutputStream.writeObject(res);
                          //System.out.println(cmd.msg);
                          if ( cmd.msg.contains("register"))
@@ -91,8 +91,9 @@ public class Server {
 //                                     c.addAssignment(as);
                                      //end test
 //                                     res.Clear();
-                                     res.person = new Person(next);
-                                     objectOutputStream.writeObject(res);
+                                     Packet lol=new Packet("t",next);
+                                     System.out.println(lol.person.toString());
+                                     objectOutputStream.writeObject(lol);
                                      objectOutputStream.flush();
                                      res.Clear();
                                      status=true;
