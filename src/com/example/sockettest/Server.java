@@ -42,10 +42,10 @@ public class Server {
     }*/
     
     public static void main(String[] args) throws IOException, ClassNotFoundException{
-            String responceTrue = "t";
-            String responceFalse = "f";
-            Packet res=new Packet(responceTrue);
-            Packet respos=new Packet(responceFalse);
+            String trueString = "t";
+            String falseString = "f";
+            Packet responceTrue=new Packet(trueString);
+            Packet responceFalse=new Packet(falseString);
             ss = new ServerSocket(PORT);
             s = ss.accept();
             System.out.println("connection succeeded!!!");
@@ -54,7 +54,7 @@ public class Server {
             Packet cmd=new Packet("t");
             Person p;
             //
-            persons.add(new Person(0,"ahmed", "1", "1", "1"));
+            persons.add(new Person(1,"ahmed", "1", "1", "1"));
             //
             while(true)
             {
@@ -72,18 +72,32 @@ public class Server {
                          }
                          else if (cmd.msg.contains("connect"))
                          {
-                             objectOutputStream.writeObject(res);
+                             objectOutputStream.writeObject(responceTrue);
                              System.out.println(cmd.msg);
                          }
                         else if (cmd.msg.contains("JOINCLASS"))
                          {
-                             for (){
-                                 
-                             }
-                             
-                             objectOutputStream.writeObject(res);
-                             System.out.println(cmd.msg);
-                             cmd.person.JoinClassroom(new Classroom("n", "123", "desidasidnas"));
+                            Classroom c = Classroom.findbyid(cmd.msg2, clist);
+                            Person x = Person.findPersonById(cmd.person.getId(), persons);
+                            Packet pac;
+                            if(c!=null){
+                            x.JoinClassroom(c);
+                            pac = new Packet("t", x);
+                            }
+                            else{
+                                pac = new Packet("f");
+                            }
+                            objectOutputStream.writeObject(pac);
+                            
+                         }
+                        else if (cmd.msg.contains("CREATECLASSROOM"))
+                         {
+                            Classroom c = cmd.person.getJoinedClasses().get(0);
+                            clist.add(c);
+                            Person ps = Person.findPersonById(cmd.msg2, persons);
+                            ps.JoinClassroom(c);
+                            Packet pac = new Packet("t", ps);
+                            objectOutputStream.writeObject(pac);
                          }
                          else if(cmd.msg.contains("login"))
                          {
@@ -106,18 +120,18 @@ public class Server {
 //                                     c.addAssignment(as);
                                      //end test
 //                                     res.Clear();
-                                     next.JoinClassroom(new Classroom("a", "12", "asdfghjkl"));
+//                                     next.JoinClassroom(new Classroom("a", "12", "asdfghjkl"));
                                      Packet lol=new Packet("t",next);
                                      System.out.println(lol.person.toString());
                                      objectOutputStream.writeObject(lol);
                                      objectOutputStream.flush();
-                                     res.Clear();
+                                     responceTrue.Clear();
                                      status=true;
                                      break;
                                  }
                              }
                              if (status==false)
-                                 objectOutputStream.writeObject(respos);
+                                 objectOutputStream.writeObject(responceFalse);
                              }
                              
                          }

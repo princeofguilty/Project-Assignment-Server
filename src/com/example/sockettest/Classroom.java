@@ -47,6 +47,8 @@ public class Classroom implements java.io.Serializable {
     public Classroom(List<Classroom> clist){
         clist.add(this);
     }
+    public Classroom(){
+    }
     public Classroom(String name, String id, String describtion, List<Classroom> clist){
         setName(name);
         setId(id);
@@ -97,7 +99,7 @@ public class Classroom implements java.io.Serializable {
     }
 
     public static Classroom findbyid(String id, List<Classroom> clist){
-        for(Classroom c: Classroom.clist){
+        for(Classroom c: clist){
             if (c.getId().equals(id))
                 return c;
         }
