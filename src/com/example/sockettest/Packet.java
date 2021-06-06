@@ -21,6 +21,7 @@ public class Packet implements Serializable {
     public Packet(String msg, String msg2) {
         this.msg = msg;
         this.msg2 = msg2;
+        person = null;
     }
     public Packet(String msg, Person person) {
         this.msg = msg;
@@ -28,6 +29,7 @@ public class Packet implements Serializable {
     }
     public Packet(String msg, String msg2, Person person) {
         this.msg = msg;
+        this.msg2 = msg2;
         this.person = person;
     }
     @Override

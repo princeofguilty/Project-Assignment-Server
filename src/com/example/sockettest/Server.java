@@ -94,6 +94,7 @@ public class Server {
                          {
                             Classroom c = cmd.person.getJoinedClasses().get(0);
                             clist.add(c);
+                            System.out.println(cmd.msg2);
                             Person ps = Person.findPersonById(cmd.msg2, persons);
                             ps.JoinClassroom(c);
                             Packet pac = new Packet("t", ps);
