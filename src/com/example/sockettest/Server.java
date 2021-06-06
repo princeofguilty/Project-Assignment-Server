@@ -27,6 +27,8 @@ public class Server {
     static Person din;
     public static List<Person> persons=new ArrayList<Person>();
     private static final int PORT = 9990;
+    private static List<Classroom> clist=new ArrayList<Classroom>();
+
 
    /* public String loginReg(Socket s)
     {
@@ -46,11 +48,14 @@ public class Server {
             Packet respos=new Packet(responceFalse);
             ss = new ServerSocket(PORT);
             s = ss.accept();
-            System.out.println("connection sucedeed!!!");
+            System.out.println("connection succeeded!!!");
             ObjectInputStream objectInputStream = new ObjectInputStream(s.getInputStream());
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(s.getOutputStream());
             Packet cmd=new Packet("t");
             Person p;
+            //
+            persons.add(new Person(0,"ahmed", "1", "1", "1"));
+            //
             while(true)
             {
             try
@@ -69,6 +74,16 @@ public class Server {
                          {
                              objectOutputStream.writeObject(res);
                              System.out.println(cmd.msg);
+                         }
+                        else if (cmd.msg.contains("JOINCLASS"))
+                         {
+                             for (){
+                                 
+                             }
+                             
+                             objectOutputStream.writeObject(res);
+                             System.out.println(cmd.msg);
+                             cmd.person.JoinClassroom(new Classroom("n", "123", "desidasidnas"));
                          }
                          else if(cmd.msg.contains("login"))
                          {
@@ -91,6 +106,7 @@ public class Server {
 //                                     c.addAssignment(as);
                                      //end test
 //                                     res.Clear();
+                                     next.JoinClassroom(new Classroom("a", "12", "asdfghjkl"));
                                      Packet lol=new Packet("t",next);
                                      System.out.println(lol.person.toString());
                                      objectOutputStream.writeObject(lol);
@@ -106,8 +122,18 @@ public class Server {
                              
                          }
             }
-                     catch ( Exception e) {
-            e.printStackTrace();
+                     catch(EOFException e ){
+                         s.close();
+                         ss.close();
+                         System.err.println("connection ended");
+                         ss = new ServerSocket(PORT);
+                         s = ss.accept();
+                        System.out.println("connection succeeded!!!");
+                        objectInputStream = new ObjectInputStream(s.getInputStream());
+                        objectOutputStream = new ObjectOutputStream(s.getOutputStream());
+                     }
+                     catch (Exception e) {
+                            e.printStackTrace();
                      }
             }
     }

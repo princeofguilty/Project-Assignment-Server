@@ -8,7 +8,6 @@ public class Classroom implements java.io.Serializable {
     private String id;
     private String Describtion;
     private int AssignmentsCount=0;
-    private static List<Classroom> clist=new ArrayList<Classroom>();
     private List<Student> studentsList= new ArrayList<Student>();
     private List<Teacher> teachersList= new ArrayList<Teacher>();
     private List<Assignment> listofAssignments = new ArrayList<Assignment>();
@@ -45,19 +44,19 @@ public class Classroom implements java.io.Serializable {
         Describtion = describtion;
     }
 
-    public Classroom(){
+    public Classroom(List<Classroom> clist){
         clist.add(this);
     }
-    public Classroom(String name, String id, String describtion){
+    public Classroom(String name, String id, String describtion, List<Classroom> clist){
         setName(name);
         setId(id);
         setDescribtion(describtion);
         clist.add(this);
     }
-    public static void removeClassroom(Classroom c){
+    public static void removeClassroom(Classroom c, List<Classroom> clist){
         clist.remove(c);
     }
-    public static List<Classroom> findClassroom_name(String name){
+    public static List<Classroom> findClassroom_name(String name, List<Classroom> clist){
         List<Classroom> findings = new ArrayList<Classroom>();
         for(Classroom c : clist){
             if(c.getName().equals(name)){
@@ -66,7 +65,7 @@ public class Classroom implements java.io.Serializable {
         }
         return findings;
     }
-    public static List<Classroom> findClassroom_id(String id){
+    public static List<Classroom> findClassroom_id(String id, List<Classroom> clist){
         List<Classroom> findings = new ArrayList<Classroom>();
         for(Classroom c : clist){
             if(c.getId().equals(id)){
@@ -97,7 +96,7 @@ public class Classroom implements java.io.Serializable {
         return AssignmentsCount;
     }
 
-    public static Classroom findbyid(String id){
+    public static Classroom findbyid(String id, List<Classroom> clist){
         for(Classroom c: Classroom.clist){
             if (c.getId().equals(id))
                 return c;

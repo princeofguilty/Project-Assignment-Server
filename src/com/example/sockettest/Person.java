@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Person implements PersonInterface, Serializable {
-    private int type;
+    public int type=0;
     private String name;
     private String Username;
     private String Password;
@@ -26,17 +26,16 @@ public class Person implements PersonInterface, Serializable {
         Username = p.Username;
         Password = p.Password;
         id = p.id;
-        name=p.name;
         joined_classes_count = p.joined_classes_count;
         type = p.type;
-        //joined_classes_count = p.joined_classes_count;
-        /*JoinedClasses = new ArrayList<Classroom>();
+        joined_classes_count = p.joined_classes_count;
+        JoinedClasses = new ArrayList<Classroom>();
         if (p.joined_classes_count!=0){
             for(Classroom c : p.JoinedClasses){
                 JoinedClasses.add(c);
             }
-        }*/
-    }    
+        }
+    }
 
     public Person( int type, String name, String id, String username, String password) {
 
@@ -116,5 +115,14 @@ public class Person implements PersonInterface, Serializable {
     }
     public void removeClassroom(Classroom c){
         JoinedClasses.remove(c);
+    }
+    
+    public Person findPersonById( String id,List<Person> p){
+        for(Person i: p){
+            if (i.getUsername().equals(id)){
+                return i;
+            }
+        }
+        return null;
     }
 }
