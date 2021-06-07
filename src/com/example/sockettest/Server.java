@@ -42,9 +42,9 @@ public class Server {
     }*/
     
     public static void main(String[] args) throws IOException, ClassNotFoundException{
-            String trueString = "t";
+            //String trueString = "t";
             String falseString = "f";
-            Packet responceTrue=new Packet(trueString);
+            //Packet responceTrue=new Packet(trueString);
             Packet responceFalse=new Packet(falseString);
             ss = new ServerSocket(PORT);
             s = ss.accept();
@@ -72,6 +72,8 @@ public class Server {
                          }
                          else if (cmd.msg.contains("connect"))
                          {
+                             String trueString = "t";
+                             Packet responceTrue=new Packet(trueString);
                              objectOutputStream.writeObject(responceTrue);
                              System.out.println(cmd.msg);
                          }
@@ -126,7 +128,7 @@ public class Server {
                                      System.out.println(lol.person.toString());
                                      objectOutputStream.writeObject(lol);
                                      objectOutputStream.flush();
-                                     responceTrue.Clear();
+                                    // responceTrue.Clear();
                                      status=true;
                                      break;
                                  }
