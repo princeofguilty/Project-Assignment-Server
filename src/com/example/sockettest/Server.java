@@ -26,7 +26,7 @@ public class Server {
     BufferedReader br;
     static Person din;
     public static List<Person> persons=new ArrayList<Person>();
-    private static final int PORT = 9990;
+    private static final int PORT = 9998;
     private static List<Classroom> clist=new ArrayList<Classroom>();
 
 
