@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Princ/Documents/NetBeansProjects/Project-Assignment-Server/src/com/example/sockettest/Classroom.java</file>
             <file>file:/C:/Users/Princ/Documents/NetBeansProjects/Project-Assignment-Server/src/com/example/sockettest/Packet.java</file>
             <file>file:/C:/Users/Princ/Documents/NetBeansProjects/Project-Assignment-Server/src/com/example/sockettest/Student.java</file>
@@ -11,6 +12,16 @@
             <file>file:/C:/Users/Princ/Documents/NetBeansProjects/Project-Assignment-Server/src/com/example/sockettest/Teacher.java</file>
             <file>file:/C:/Users/Princ/Documents/NetBeansProjects/Project-Assignment-Server/src/com/example/sockettest/PersonInterface.java</file>
             <file>file:/C:/Users/Princ/Documents/NetBeansProjects/Project-Assignment-Server/src/com/example/sockettest/Person.java</file>
+=======
+            <file>file:/C:/Users/BASILYJOK3R/Documents/NetBeansProjects/Server/src/com/example/sockettest/Classroom.java</file>
+            <file>file:/C:/Users/BASILYJOK3R/Documents/NetBeansProjects/Server/src/com/example/sockettest/Student.java</file>
+            <file>file:/C:/Users/BASILYJOK3R/Documents/NetBeansProjects/Server/src/com/example/sockettest/Server.java</file>
+            <file>file:/C:/Users/BASILYJOK3R/Documents/NetBeansProjects/Server/src/com/example/sockettest/Packet.java</file>
+            <file>file:/C:/Users/BASILYJOK3R/Documents/NetBeansProjects/Server/src/com/example/sockettest/PersonInterface.java</file>
+            <file>file:/C:/Users/BASILYJOK3R/Documents/NetBeansProjects/Server/src/com/example/sockettest/Assignment.java</file>
+            <file>file:/C:/Users/BASILYJOK3R/Documents/NetBeansProjects/Server/src/com/example/sockettest/Person.java</file>
+            <file>file:/C:/Users/BASILYJOK3R/Documents/NetBeansProjects/Server/src/com/example/sockettest/Teacher.java</file>
+>>>>>>> 4be9fae69c5373250d494d93a452830dedaaa86c
         </group>
     </open-files>
 </project-private>
