@@ -84,6 +84,7 @@ public class Server {
                             Packet pac;
                             if(c!=null){
                             x.JoinClassroom(c);
+                            c.addPerson(x);
                             pac = new Packet("t", x);
                             }
                             else{
@@ -95,12 +96,25 @@ public class Server {
                         else if (cmd.msg.contains("CREATECLASSROOM"))
                          {
                             Classroom c = cmd.person.getJoinedClasses().get(0);
-                            clist.add(c);
                             System.out.println(cmd.msg2);
                             Person ps = Person.findPersonById(cmd.msg2, persons);
                             ps.JoinClassroom(c);
+                            c.addPerson(ps);
+                            clist.add(c);
                             Packet pac = new Packet("t", ps);
                             objectOutputStream.writeObject(pac);
+                         }
+                        else if (cmd.msg.contains("addassignment"))
+                         {
+                            for (Classroom c:clist)
+                            {
+                                if (cmd.a.getAssignId().contains(c.getId()))
+                                {
+                                    c.addAssignment(cmd.a);
+                                    Packet pac = new Packet("t", c);
+                                    objectOutputStream.writeObject(pac);
+                                }
+                            }
                          }
                          else if(cmd.msg.contains("login"))
                          {
