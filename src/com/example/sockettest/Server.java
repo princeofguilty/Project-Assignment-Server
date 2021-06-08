@@ -69,6 +69,7 @@ public class Server {
                              p=cmd.person;
                              System.out.println(p.toString());
                              persons.add(p);
+                             System.out.println(cmd.person.getName() + " just registered as : " + cmd.person.getUsername());
                          }
                          else if (cmd.msg.contains("connect"))
                          {
@@ -86,6 +87,7 @@ public class Server {
                             x.JoinClassroom(c);
                             c.addPerson(x);
                             pac = new Packet("t", x);
+                            System.out.println(x.getName() + " just joined class : " + c.getName() + " of code " + c.getId());
                             }
                             else{
                                 pac = new Packet("f", cmd.person);
@@ -103,6 +105,7 @@ public class Server {
                             clist.add(c);
                             Packet pac = new Packet("t", ps);
                             objectOutputStream.writeObject(pac);
+                            System.out.println(ps.getName() + " just Created classroom : " + c.getName() + " of code "+ c.getId());
                          }
                         else if (cmd.msg.contains("addassignment"))
                          {
@@ -113,6 +116,7 @@ public class Server {
                                     c.addAssignment(cmd.a);
                                     Packet pac = new Packet("t", c);
                                     objectOutputStream.writeObject(pac);
+                                    System.out.println(cmd.msg2 + " just added assignment : " + cmd.a.getTitle() + " in CLassroom "+ cmd.a.getClass());
                                 }
                             }
                          }
@@ -124,27 +128,19 @@ public class Server {
                              boolean status=false;
                              for (Person next: persons)
                              {
-                                 if (next.getUsername().compareTo(p.getUsername())==0 && next.getPassword().compareTo(p.getPassword())==0)
+                                 if (next.getUsername().compareTo(p.getUsername())==0)
                                  {
-                                     //test
-//                                     Classroom c = new Classroom();
-//                                     c.setName("test class");
-//                                     c.setDescribtion("hello world");
-//                                     c.setId("123x");
-//                                     next.JoinClassroom(c);
-//                                     Assignment as = new Assignment(new Teacher(), c, "mega", "test");
-//                                     as.setAssignId("123");
-//                                     c.addAssignment(as);
-                                     //end test
-//                                     res.Clear();
-//                                     next.JoinClassroom(new Classroom("a", "12", "asdfghjkl"));
+                                     if (next.getPassword().compareTo(p.getPassword())==0){
                                      Packet lol=new Packet("t",next);
                                      System.out.println(lol.person.toString());
                                      objectOutputStream.writeObject(lol);
                                      objectOutputStream.flush();
-                                    // responceTrue.Clear();
                                      status=true;
+                                     System.out.println(next.getName() + " of username : " + cmd.person.getUsername() + " just logged in");
                                      break;
+                                    }
+                                     else
+                                         break;
                                  }
                              }
                              if (status==false)
