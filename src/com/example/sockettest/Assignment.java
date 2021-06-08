@@ -28,6 +28,9 @@ public class Assignment implements java.io.Serializable {
         this.id = id;
     }
 
+    public Assignment() {
+    }
+
     public String getAssignId() {
         return id;
     }
