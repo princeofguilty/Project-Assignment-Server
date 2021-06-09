@@ -12,7 +12,6 @@ public class Person implements PersonInterface, Serializable {
     private String id;
     public int joined_classes_count=0;
     private List<Classroom> JoinedClasses = new ArrayList<Classroom>();
-    private List<Person> personList = new ArrayList<Person>();
 
     public Person(){}
 
@@ -44,15 +43,6 @@ public class Person implements PersonInterface, Serializable {
         setId(Id);
         setPassword(password);
         setUsername(username);
-    }
-
-    public boolean checkUsername(String username) {
-        for(Person p: personList){
-            if (p.getUsername().equals(username)){
-                return false;
-            }
-        }
-        return true;
     }
 
     @Override
@@ -110,10 +100,10 @@ public class Person implements PersonInterface, Serializable {
         JoinedClasses.remove(c);
     }
 
-    public static Person findPersonById( String id,List<Person> p){
-        String idx = id.toLowerCase();
+    public static Person findPersonByUsername( String us,List<Person> p){
+        String usx = us.toLowerCase();
         for(Person i: p){
-            if (i.getUsername().toLowerCase().equals(idx)){
+            if (i.getUsername().toLowerCase().equals(usx)){
                 return i;
             }
         }

@@ -86,7 +86,7 @@ public class Server {
                     System.out.println(cmd.msg);
                 } else if (cmd.msg.contains("JOINCLASS")) {
                     Classroom c = Classroom.findbyid(cmd.msg2, clist);
-                    Person x = Person.findPersonById(cmd.person.getId(), persons);
+                    Person x = Person.findPersonByUsername(cmd.person.getUsername(), persons);
                     Packet pac;
                     if (c != null) {
                         x.JoinClassroom(c);
@@ -101,7 +101,7 @@ public class Server {
                 } else if (cmd.msg.contains("CREATECLASSROOM")) {
                     Classroom c = cmd.person.getJoinedClasses().get(0);
                     System.out.println(cmd.msg2);
-                    Person ps = Person.findPersonById(cmd.msg2, persons);
+                    Person ps = Person.findPersonByUsername(cmd.msg2, persons);
                     ps.JoinClassroom(c);
                     c.addPerson(ps);
                     clist.add(c);
